@@ -26,18 +26,17 @@ arrA;
 		document.getElementsByTagName("h1").item(0).innerText = this.sentence; 
 
 		var correctA = Math.floor(Math.random() * 3);
-		document.getElementsByClassName("answers").item(correctA).innerText = this.answers; 
+		document.getElementsByClassName("answers").item(correctA).innerText = "! " + this.answers; 
 
 		var answers = document.getElementsByClassName("answers");
 		console.log(answers);
 
 		for(var i = 0; i < answers.length; i++) {
 			if (answers.item([i]).textContent == "") {
-				answers.item([i]).textContent = "test";
+				var randomA = Math.floor(Math.random() * 50);
+				answers.item([i]).textContent = arrA[randomA];
 			} else {}
 		}
-		
-		
 
 		/*for(var i = 0; i < this.answers.length; i++) {
 			console.log(i + ": " + this.answers[i]);
