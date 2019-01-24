@@ -67,64 +67,73 @@ arrA;
 		var correctABox = this.correctA;
 		console.log(this.correctA + " " + correctABox);
 
-		// Вызываем функцию проверки ответа 
 		this.checkAnswer(answers, correctABox, mainText);
-
 	};
 
 	// Добаляем в прототип конструктора функционал проверки верного ответа
 	Question.prototype.checkAnswer = function(answers, correctABox, mainText) {
-		// Назначаем каждому элементу клик ивент для сравнения содержимого с правильным ответом
-		for(var i = 0; i < answers.length; i++) {
-			answers.item([i]).addEventListener('click', function() {
+		function eventLoop(event) {
+			for(var i = 0; i < answers.length; i++) {
+				// answers.item([i]) + "." + event + ('click', checkEvent);
+				answers[i].onclick = event;
+				console.log(answers[i].onclick);
+			};		
+		};
 
-				function emptyText() {
-					for(var i = 0; i < answers.length; i++) {
-						answers.item([i]).textContent = "";
-					};
-					console.log(correctABox);
-					correctABox = "";
-					document.querySelector('.correctA').classList.remove('correctA');
-				};	
+		eventLoop(checkEvent);
+
+		function emptyText() {
+			for(var i = 0; i < answers.length; i++) {
+				answers.item([i]).textContent = "";
+			};
+			console.log(correctABox);
+			correctABox = "";
+			document.querySelector('.correctA').classList.remove('correctA');
+		};	
+
+		function checkEvent() {
+			
+			// Если ответ правильный добавить очко и высветить на несколько секунд надпись 'YEP'
+			// Если ответ не правильный удалить жизнь и высветить на несколько секунд надпись 'NOPE'
+			if (this.textContent === correctABox) {
+				// console.log("yep");
+
+				scoreCount += 1;
+				displayStatus();
+
+				mainText.item(0).innerText = "Yep"; 
 				
-				// Если ответ правильный добавить очко и высветить на несколько секунд надпись 'YEP'
-				// Если ответ не правильный удалить жизнь и высветить на несколько секунд надпись 'NOPE'
-				if (this.textContent === correctABox) {
-					// console.log("yep");
+				emptyText();
 
-					scoreCount += 1;
-					displayStatus();
+				// timer + Next Question 
+				setTimeout(newQuestion, 3000);
 
-					mainText.item(0).innerText = "Yep"; 
-					
-					emptyText();
+				// Some usability 
+				document.body.style.background = "lightgreen";
 
-					// timer + Next Question 
-					setTimeout(newQuestion, 3000);
+				console.log(this);
 
-					// Some usability ???
-					//document.body.style.background = "lightgreen";*/
-				} else {
-					console.log("bad");
-					// life -1, display lose title 
-					
-					healthCount -= 1;
-					displayStatus();
-					
-					mainText.item(0).innerText = "Nope";
+				checkEvent = null;
+			} else {
+				console.log("bad");
+				// life -1, display lose title 
+				
+				healthCount -= 1;
+				displayStatus();
+				
+				mainText.item(0).innerText = "Nope";
 
-					emptyText();
+				emptyText();
 
-					/*
-					// Display this question again  !!!
+				// timer + Next Question 
+				setTimeout(newQuestion, 3000);
 
-					// timer + Next Question 
+				// console.log("hey, Ilia");
+				document.body.style.background = "grey";
 
-					// console.log("hey, Ilia");
-					//document.body.style.background = "grey";*/
-				};
-			});
-		};		
+				checkEvent = null;
+			};
+		};
 	};
 
 	//  Используя Коструктор Questions создаем добавляем в массив questions все пары вопрос - ответ.
@@ -135,15 +144,14 @@ arrA;
 	// Добавляем функцию выбирающую рандомный конструктор (до тех пор пока они не закончатся) из созданных и вызывающую у него метод отображения вопроса и ответов на него <3
 	function newQuestion() {
 		if (questions.length != 0) {
-			// document.body.style.background = "white";
-
+			document.body.style.background = "white";
 			var random = Math.floor(Math.random() * questions.length);
 			// console.log(random);
 			// console.log(questions[random]);
 			questions[random].askQuestion(random);
 
 			// Удалить вопрос после верного ответа из массива или иной способ
-			// questions.splice(questions[random], 1);
+			questions.splice(questions[random], 1);
 		} else {
 			// Вопросы кончились
 		}
@@ -165,6 +173,7 @@ arrA;
 	// Вызываем Гейм Инит, обнуляем все поля и запускаем первый вопрос 
 	initGame();
 	newQuestion();
+
 
 // )();
 
