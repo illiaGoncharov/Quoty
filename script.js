@@ -61,7 +61,7 @@ arrA;
 
 		// Correct answer box var 
 		var correctABox = this.correctA;
-		console.log(this.correctA + " " + correctABox);
+		console.log(this.correctA);
 
 		// Call check
 		this.checkAnswer(answers, correctABox, mainText);
@@ -103,7 +103,7 @@ arrA;
 				setTimeout(newQuestion, 3000);
 
 				// Some usability 
-				document.body.style.background = "lightgreen";
+				// document.body.style.background = "lightgreen";
 
 				console.log(this);
 
@@ -120,7 +120,7 @@ arrA;
 				setTimeout(newQuestion, 3000);
 
 				// console.log("hey, Ilia");
-				document.body.style.background = "grey";
+				// document.body.style.background = "grey";
 
 				checkEvent = null;
 			};

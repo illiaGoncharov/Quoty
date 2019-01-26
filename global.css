@@ -4,18 +4,30 @@
 	padding: 0;
 	margin: 0; 
 	box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Manege";
+    src: url("manege.otf");
+    font-style: normal;
+    font-weight: normal;
 }	
 
+body {
+	 font-family: "Manege";
+}
+
 h1 {
-	width: 70%;
+	width: 80%;
 	margin: 0 auto;
-	margin-top: 100px;
+	margin-top: 230px;
 	margin-bottom: 50px;
 	text-align: center;
 }
 
 p {
 	height: 30px;
+	margin-top: 0px;
 	padding: 10px;
 	cursor: pointer;
 	width: 70%;
@@ -23,6 +35,6 @@ p {
 	text-align: center;
 }
 
-.correctA {
+/*.correctA {
 	color: blue;
-}
+}*/
