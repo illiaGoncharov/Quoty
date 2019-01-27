@@ -13,6 +13,15 @@ arrQ;
 arrA;
 */
 
+// Issues
+// Same authors in a raw
+// UI moving 
+// Transitions 
+// UI with more info 
+// Win / lose screen
+// Lifes goes - 
+// cool patterns every 10 scores  
+
 //( function(){
 	// Create variables with data about health and score
 	var health = document.getElementById('health'),
@@ -74,7 +83,7 @@ arrA;
 		function eventLoop(event) {
 			for(var i = 0; i < answers.length; i++) {
 				answers[i].onclick = event;
-				console.log(answers[i].onclick);
+				// console.log(answers[i].onclick);
 			};		
 		};
 		eventLoop(checkEvent);
@@ -84,7 +93,7 @@ arrA;
 			for(var i = 0; i < answers.length; i++) {
 				answers.item([i]).textContent = "";
 			};
-			console.log(correctABox);
+			// console.log(correctABox);
 			correctABox = "";
 			document.querySelector('.correctA').classList.remove('correctA');
 		};	
@@ -96,32 +105,18 @@ arrA;
 				displayStatus();
 
 				mainText.item(0).innerText = "Yep"; 
-				
 				emptyText();
 
-				// timer + Next Question 
 				setTimeout(newQuestion, 3000);
-
-				// Some usability 
-				// document.body.style.background = "lightgreen";
-
-				console.log(this);
-
 				checkEvent = null;
 			} else {
 				healthCount -= 1;
-				displayStatus();
-				
-				mainText.item(0).innerText = "Nope";
+				displayStatus();		
 
+				mainText.item(0).innerText = "Nope";
 				emptyText();
 
-				// timer + Next Question 
 				setTimeout(newQuestion, 3000);
-
-				// console.log("hey, Ilia");
-				// document.body.style.background = "grey";
-
 				checkEvent = null;
 			};
 		};
