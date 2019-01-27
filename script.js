@@ -103,7 +103,7 @@ arrA;
 				} else {
 					mainText.item(0).innerText = "Yep"; 
 					emptyText();
-					setTimeout(newQuestion, 3000);
+					setTimeout(newQuestion, 1500);
 					checkEvent = null;
 				}; 
 			} else {
@@ -119,7 +119,7 @@ arrA;
 				} else {
 					mainText.item(0).innerText = "Nope";
 					emptyText();
-					setTimeout(newQuestion, 3000);
+					setTimeout(newQuestion, 1500);
 					checkEvent = null;
 				};
 			};
