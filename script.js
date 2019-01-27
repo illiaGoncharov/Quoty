@@ -13,15 +13,14 @@ arrQ;
 arrA;
 */
 
-// Issues
+// • Issues
 // Same authors in a raw 
 // UI moving 
 // Transitions 
 // UI with more info 
-// Win / lose screen
-// Lifes goes - 
 // cool patterns every 10 scores  
 // Typography nice 
+// Mobile
 
 //( function(){
 	// Create variables with data about health and score
@@ -152,7 +151,7 @@ arrA;
 	// Show random Question and call mian method for it 
 	function newQuestion() {
 		if (questions.length != 0) {
-			document.body.style.background = "white";
+			// document.body.style.background = "white";
 
 			var random = Math.floor(Math.random() * questions.length);
 			questions[random].askQuestion(random);
