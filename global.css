@@ -76,4 +76,8 @@ p.answers:hover {
 		display: block;
 		padding-bottom: 20px;
 	}
+
+	p.answers:hover {
+		opacity: .5;
+	}
 }

@@ -14,13 +14,11 @@ arrA;
 */
 
 // • Issues
-// Same authors in a raw 
 // UI moving 
 // Transitions 
 // UI with more info 
 // cool patterns every 10 scores  
 // Typography nice 
-// Mobile
 
 //( function(){
 	// Create variables with data about health and score
@@ -44,8 +42,7 @@ arrA;
 
 	// Get h1 element to put quote there later
 	var mainText = document.getElementsByTagName("h1");
-	// Random position from 3 (p.answer) for correct answer
-	var randomThree = Math.floor(Math.random() * 3);
+
 	// Array with all arrays (loops)
 	var answers = document.getElementsByClassName("answers");
 
@@ -57,16 +54,25 @@ arrA;
 		mainText.item(0).innerText = this.sentence; 
 
 		// Add correct to randomThree p.answers
+		var randomThree = Math.floor(Math.random() * 3);
+		// console.log(randomThree + " :randomThree");
 		document.getElementsByClassName("answers").item(randomThree).innerText = this.correctA;
 		// Add 'correctA' class (styles)
-		document.getElementsByClassName("answers").item(randomThree).classList.add('correctA');
+		// document.getElementsByClassName("answers").item(randomThree).classList.add('correctA');
 
 		// Random wrongs to empty p.answers
+		console.log(questions.length + " :questions.length");	
+		var randomA = random;
 		for(var i = 0; i < answers.length; i++) {
+			randomA += 1;
+			// console.log(randomA);					
 			if (answers.item([i]).textContent === "") {
-				var randomA = Math.floor(Math.random() * random);
-				answers.item([i]).textContent = arrA[randomA];
-			} else {}
+				if (randomA >= 50) {
+					answers.item([i]).textContent = arrA[randomA - 10];
+				} else {
+					answers.item([i]).textContent = arrA[randomA];
+				};
+			} else {};
 		};
 
 		// Correct answer box var 
@@ -126,6 +132,7 @@ arrA;
 				};
 			};
 		};
+
 	};
 
 	// Take to elements from different arrays, combine, again
@@ -147,7 +154,7 @@ arrA;
 		};
 		// console.log(correctABox);
 		correctABox = "";
-		document.querySelector('.correctA').classList.remove('correctA');
+		// document.querySelector('.correctA').classList.remove('correctA');
 	};	
 
 	// Show random Question and call mian method for it 
