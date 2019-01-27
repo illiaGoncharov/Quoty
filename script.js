@@ -103,8 +103,9 @@ arrA;
 				} else {
 					mainText.item(0).innerText = "Yep"; 
 					emptyText();
-					setTimeout(newQuestion, 1500);
+
 					checkEvent = null;
+					setTimeout(newQuestion, 1500);
 				}; 
 			} else {
 				healthCount -= 1;
@@ -119,8 +120,9 @@ arrA;
 				} else {
 					mainText.item(0).innerText = "Nope";
 					emptyText();
-					setTimeout(newQuestion, 1500);
+
 					checkEvent = null;
+					setTimeout(newQuestion, 1500);
 				};
 			};
 		};
