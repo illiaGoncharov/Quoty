@@ -21,6 +21,8 @@ arrA;
 // Win / lose screen
 // Lifes goes - 
 // cool patterns every 10 scores  
+// Fav icon = meta 
+// Typography nice 
 
 //( function(){
 	// Create variables with data about health and score
@@ -48,6 +50,7 @@ arrA;
 	var randomThree = Math.floor(Math.random() * 3);
 	// Array with all arrays (loops)
 	var answers = document.getElementsByClassName("answers");
+
 
 
 	// Add main program method to Questions prototype. Show new, add wrong and correct call check method
@@ -83,41 +86,44 @@ arrA;
 		function eventLoop(event) {
 			for(var i = 0; i < answers.length; i++) {
 				answers[i].onclick = event;
-				// console.log(answers[i].onclick);
 			};		
 		};
 		eventLoop(checkEvent);
-
-		// Cleen after yourself, mr. program 
-		function emptyText() {
-			for(var i = 0; i < answers.length; i++) {
-				answers.item([i]).textContent = "";
-			};
-			// console.log(correctABox);
-			correctABox = "";
-			document.querySelector('.correctA').classList.remove('correctA');
-		};	
-
 
 		function checkEvent() {
 			if (this.textContent === correctABox) {
 				scoreCount += 1;
 				displayStatus();
 
-				mainText.item(0).innerText = "Yep"; 
-				emptyText();
+				if (scoreCount <= 50) {
+					// Add pic
+					mainText.item(0).innerText = "You won"; 
+					emptyText();
 
-				setTimeout(newQuestion, 3000);
-				checkEvent = null;
+					document.getElementById('health').style.display = 'none';
+					document.getElementById('score').style.fontSize = '2rem';
+				} else {
+					mainText.item(0).innerText = "Yep"; 
+					emptyText();
+					setTimeout(newQuestion, 1000);
+					checkEvent = null;
+				}; 
 			} else {
 				healthCount -= 1;
 				displayStatus();		
 
-				mainText.item(0).innerText = "Nope";
-				emptyText();
+				if (healthCount === 0) {
+					mainText.item(0).innerText = "You died...";
+					emptyText();
 
-				setTimeout(newQuestion, 3000);
-				checkEvent = null;
+					document.getElementById('health').style.display = 'none';
+					document.getElementById('score').style.fontSize = '2rem';
+				} else {
+					mainText.item(0).innerText = "Nope";
+					emptyText();
+					setTimeout(newQuestion, 1000);
+					checkEvent = null;
+				};
 			};
 		};
 	};
@@ -125,6 +131,23 @@ arrA;
 	// Take to elements from different arrays, combine, again
 	for(var i = 0; i < arrA.length; i++) {
 		questions[i] = new Question(arrQ[i], arrA[i]);
+	};	
+
+	// Update status 
+	function displayStatus() {
+		health.textContent = "Lifes: " + healthCount;
+		score.textContent = scoreCount + "/50";
+	};
+
+	
+	// Cleen after yourself, mr. program 
+	function emptyText() {
+		for(var i = 0; i < answers.length; i++) {
+			answers.item([i]).textContent = "";
+		};
+		// console.log(correctABox);
+		correctABox = "";
+		document.querySelector('.correctA').classList.remove('correctA');
 	};	
 
 	// Show random Question and call mian method for it 
@@ -137,15 +160,7 @@ arrA;
 
 			// Remove after execution 
 			questions.splice(questions[random], 1);
-		} else {
-			alert("That's all floks");
-		}
-	};
-
-	// Update status 
-	function displayStatus() {
-		health.textContent = "Lifes: " + healthCount;
-		score.textContent = scoreCount + "/50";
+		} else {};
 	};
 
 	// Game init function 	
