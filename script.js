@@ -14,14 +14,13 @@ arrA;
 */
 
 // Issues
-// Same authors in a raw
+// Same authors in a raw 
 // UI moving 
 // Transitions 
 // UI with more info 
 // Win / lose screen
 // Lifes goes - 
 // cool patterns every 10 scores  
-// Fav icon = meta 
 // Typography nice 
 
 //( function(){
@@ -95,7 +94,7 @@ arrA;
 				scoreCount += 1;
 				displayStatus();
 
-				if (scoreCount <= 50) {
+				if (scoreCount >= 50) {
 					// Add pic
 					mainText.item(0).innerText = "You won"; 
 					emptyText();
@@ -105,7 +104,7 @@ arrA;
 				} else {
 					mainText.item(0).innerText = "Yep"; 
 					emptyText();
-					setTimeout(newQuestion, 1000);
+					setTimeout(newQuestion, 3000);
 					checkEvent = null;
 				}; 
 			} else {
@@ -121,7 +120,7 @@ arrA;
 				} else {
 					mainText.item(0).innerText = "Nope";
 					emptyText();
-					setTimeout(newQuestion, 1000);
+					setTimeout(newQuestion, 3000);
 					checkEvent = null;
 				};
 			};
@@ -165,7 +164,7 @@ arrA;
 
 	// Game init function 	
 	function initGame() {
-		healthCount = 3;
+		healthCount = 10;
 		scoreCount = 0;
 		displayStatus();
 	};
