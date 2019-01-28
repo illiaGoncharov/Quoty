@@ -65,7 +65,7 @@ arrA;
 		var randomA = random;
 		for(var i = 0; i < answers.length; i++) {
 			randomA += 1;
-			// console.log(randomA);					
+			console.log(randomA);					
 			if (answers.item([i]).textContent === "") {
 				if (randomA >= 50) {
 					answers.item([i]).textContent = arrA[randomA - 10];
@@ -175,6 +175,8 @@ arrA;
 		healthCount = 10;
 		scoreCount = 0;
 		displayStatus();
+
+		//alert("Hey there, stranger! Let's play a game. I'll give you a quote, and you'll try to guess who said that! Let's go!");
 	};
 
 	initGame();
